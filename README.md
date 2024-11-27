@@ -1,26 +1,74 @@
-# state-docs-ai-assistant
-AI-powered document management system for state and municipal governments. Features automated PDF indexing, semantic search, and natural language querying using Azure OpenAI. Includes independent deployment architecture for multi-state support.
 # State Documents AI Assistant
 
-AI-powered assistant for managing and querying state government documents.
+Sistema de gestión documental con IA para gobiernos estatales y municipales.
 
-## Features
-- PDF document indexing and search
-- Azure OpenAI integration
-- Document version control
-- Multi-state support
+## Características
+- Indexación automática de PDFs
+- Búsqueda semántica
+- Consultas en lenguaje natural usando Azure OpenAI
+- Soporte multi-estado/municipio
 
-## Architecture
-- Azure Blob Storage
-- Azure Cognitive Search
-- Azure OpenAI Service
-- Azure App Service
+## Arquitectura
+- Azure Blob Storage: Almacenamiento de documentos
+- Azure Cognitive Search: Motor de búsqueda
+- Azure OpenAI Service: Procesamiento lenguaje natural
+- Azure App Service: Alojamiento de la aplicación
 
-## Getting Started
-1. Clone repository
-2. Configure Azure resources
-3. Set environment variables
-4. Run development server
+## Requisitos Previos
+- Cuenta Azure
+- Suscripción Azure OpenAI
+- Node.js y Python 3.9+
+- Terraform
 
-## License
-MIT License
+## Instalación
+
+1. Clonar repositorio:
+```bash
+git clone https://github.com/gobiernodigitaleinnovacion/state-docs-ai-assistant.git
+cd state-docs-ai-assistant
+```
+
+2. Configurar variables de entorno:
+```bash
+cp .env.example .env
+# Editar .env con tus credenciales
+```
+
+3. Infraestructura Azure:
+```bash
+cd infrastructure/terraform
+terraform init
+terraform apply
+```
+
+4. Instalar dependencias:
+```bash
+pip install -r requirements.txt
+cd src/frontend
+npm install
+```
+
+5. Ejecutar aplicación:
+```bash
+# Backend
+cd src/api
+uvicorn main:app --reload
+
+# Frontend
+cd src/frontend
+npm start
+```
+
+## Estructura del Proyecto
+```
+/
+├── src/
+│   ├── indexer/     # Procesamiento PDFs
+│   ├── api/         # API Backend
+│   └── frontend/    # UI React
+├── infrastructure/  # Terraform IaC
+└── docs/           # Documentación
+```
+
+## Licencia
+MIT
